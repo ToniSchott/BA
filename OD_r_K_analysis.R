@@ -7,7 +7,7 @@ library(tidyverse)
 library(here)
 
 #load table
-kr_comparison <- read.csv(file = here("Tables/rK_comparison.csv"))
+kr_comparison <- read.csv(file = here("rK_comparison.csv"))
 
 
 
@@ -51,7 +51,7 @@ ODTukey_r <- rbind(rtemp,rnut,rnuttemp)
 ODTukey_r <- as.data.frame(ODTukey_r)
 
 
-write.table(ODTukey_r, file = here("Tables/OD_r_tukeyhsd.txt"), sep = ";")
+write.table(ODTukey_r, file = here("OD_r_tukeyhsd.txt"), sep = ";")
 
 
 #rename column

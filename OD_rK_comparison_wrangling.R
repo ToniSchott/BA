@@ -7,8 +7,8 @@ library(readxl)
 library(tidyverse)
 library(here)
 
-######## starte von hier und lese erstellten DF ein ######
-All_sampling <- read_csv("~/Uni/ICBM_Bachelorarbeit/DataForAnalysis/Toni/MixPulse16.csv")
+######## lese DF ein ######
+All_sampling <- read_csv("MixPulse16.csv")
 
 #omit replica 3 high mix 21°C!!!!
 All_sampling <- filter(All_sampling, treatment != "MIX"| nut != "HI" | temperature != 21| rep != 3)
@@ -35,7 +35,7 @@ ggplot(DataPlot, aes(x = sampling, y = meanValue, color = treatment))+
   facet_grid(~temperature~nut)+
   theme_bw()+
   theme(legend.position = 'bottom')
-ggsave(plot = last_plot(), file = 'Figures/Growth_MIXpulse_sampling16OD.png', width = 6, height = 4)
+
 
 
 
@@ -2034,4 +2034,4 @@ kr_comparison <- distinct(kr_comparison, treatmentID, .keep_all = T)
 
 #save df
 
-write.csv(kr_comparison, file = here("Tables/rK_comparison.csv"))
+write.csv(kr_comparison, file = here("rK_comparison.csv"))
