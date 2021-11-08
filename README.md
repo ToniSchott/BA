@@ -9,3 +9,5 @@ If you want start from scratch, and calculate r and K, use "OD_rK_comparison_wra
 You can either use the MixPulse16 or MixPulse25 dataset, depending on how many sampling you want to include.
 
 The same system applies for the count data.
+
+The folder CTD-data gives info on the sampling points of the species in the North Sea
