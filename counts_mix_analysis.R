@@ -15,7 +15,7 @@ library(dplyr)
 
 #import dataset
 
-data <- read_delim("Tables/counts_mix_structured.csv", 
+data <- read_delim("counts_mix_structured.csv", 
                    ";", escape_double = FALSE, trim_ws = TRUE)
 data <- select( data, -...1,-info)
 data$temperature <- as.factor(data$temperature)

@@ -12,7 +12,7 @@ library(ggpubr)
 
 #import dataset
 
-data <- read_excel("Tables/counts_mix_rawdata.xlsx", 
+data <- read_excel("counts_mix_rawdata.xlsx", 
                                col_types = c("numeric", "numeric", "text", 
                                              "numeric", "numeric", "text", "text", "numeric", "text"))
 
@@ -35,9 +35,9 @@ data <- mutate(data, temperature = if_else(data$sample <=108 , 9,
                                                            if_else(data$sample  >=277 & data$sample <=288, 18,
                                                                    if_else(data$sample  >=337 & data$sample <=348, 21, NULL))))))
 
-# f?r nut neue tabelle mit nutspalte einladen
+# for nut neue tabelle mit nutspalte einladen
 
-data_nut <- read_excel("~/Uni/ICBM_Bachelorarbeit/Grundlegende Tabellen/TPC_Masters_ID.xlsx")
+data_nut <- read_excel("TPC_Masters_ID.xlsx")
 
 data_nut <- select(data_nut, Sample,Nut)
 
@@ -54,7 +54,7 @@ data <- left_join(data, data_nut, by = "sample")
 
 #als neue Tabelle speichern
 
-write.csv2(data, file = "Tables/counts_mix_structured.csv")
+write.csv2(data, file = "counts_mix_structured.csv")
 
 
 

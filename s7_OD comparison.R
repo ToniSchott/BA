@@ -13,7 +13,7 @@ library(ggpubr)
 library(equivalence)
 
 #import dataset OD of mix and pulse on sampling 7
-data <- read_csv("~/Uni/ICBM_Bachelorarbeit/DataForAnalysis/Toni/MixPulse25.csv")
+data <- read_csv("MixPulse25.csv")
 str(data)
 
 #filter s7 and OD = 440
@@ -21,10 +21,10 @@ str(data)
 data_s7 <- filter(data, sampling == 7, method == "OD",wavelength1 == 440)
 
 
-#import blank plates dataset ANMERKUNG!! keine blanks für mix und pulse plates gemacht, 
+#import blank plates dataset Note!! keine blanks für mix und pulse plates gemacht, 
 #da bei jedem zweiten sampling dafür neue plates verwendet wurden
 #daher hier mean values der kalibrierung der anderen plates verwendet
-AllBlanks <- read_csv("~/Uni/ICBM_Bachelorarbeit/DataForAnalysis/data_files_tpc/AllBlanks.csv")
+AllBlanks <- read_csv("AllBlanks.csv")
 #View(AllBlanks)
 
 # mean of values grouped
@@ -36,7 +36,7 @@ AllBlanks <- ungroup(AllBlanks)
 #filter one temperature, since they all have the same mean values
 AllBlanks <- filter(AllBlanks, temperature == 9)
 
-#filter unnötige wells und spalten
+#filter unnecessary wells und spalten
 AllBlanks <- AllBlanks %>% filter( treatment_ID != "MQ", method == "OD", wavelength1 == 440) %>%
   dplyr::select(wavelength1, meanbygroup, plate, method ) %>%
   rename(valueBlank = meanbygroup, plateBlank = plate)
